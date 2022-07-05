@@ -1,5 +1,5 @@
 {
-  "name": "creatorspace-frontend",
+  "name": "nextjs-smartcontract-lottery-fcc",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,12 +9,23 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "next": "12.2.0",
-    "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "@walletconnect/web3-provider": "^1.7.8",
+    "@web3auth/web3auth": "^1.1.0",
+    "magic-sdk": "^8.1.1",
+    "@headlessui/react": "^1.6.5",
+    "moralis": "^1.8.1",
+    "next": "12.1.5",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-moralis": "^1.4.0",
+    "react-scroll": "^1.8.7",
+    "web3uikit": "^0.1.164"
   },
   "devDependencies": {
-    "eslint": "8.19.0",
-    "eslint-config-next": "12.2.0"
+    "autoprefixer": "^10.4.7",
+    "eslint": "8.13.0",
+    "eslint-config-next": "12.1.5",
+    "postcss": "^8.4.14",
+    "tailwindcss": "^3.1.4"
   }
 }
