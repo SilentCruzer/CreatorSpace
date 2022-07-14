@@ -6,13 +6,15 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "moralis:sync": "moralis-admin-cli connect-local-devchain --chain hardhat --moralisSubdomain eyzarihjxvc1.usemoralis.com --frpcPath ./frp/frpc",
+    "moralis:cloud": "moralis-admin-cli watch-cloud-folder  --moralisSubdomain eyzarihjxvc1.usemoralis.com --autoSave 1 --moralisCloudfolder ./cloudFunctions"
   },
   "dependencies": {
+    "@headlessui/react": "^1.6.5",
     "@walletconnect/web3-provider": "^1.7.8",
     "@web3auth/web3auth": "^1.1.0",
     "magic-sdk": "^8.1.1",
-    "@headlessui/react": "^1.6.5",
     "moralis": "^1.8.1",
     "next": "12.1.5",
     "react": "^18.2.0",
@@ -23,6 +25,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.7",
+    "dotenv": "^16.0.1",
     "eslint": "8.13.0",
     "eslint-config-next": "12.1.5",
     "postcss": "^8.4.14",

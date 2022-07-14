@@ -4,6 +4,9 @@
 /node_modules
 /.pnp
 .pnp.js
+.env
+/constants
+/frp
 
 # testing
 /coverage
@@ -30,3 +33,4 @@ yarn-error.log*
 
 # vercel
 .vercel
+components/asdd.jsx
