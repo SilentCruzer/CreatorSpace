@@ -6,15 +6,18 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "moralis:sync": "moralis-admin-cli watch-cloud-folder --autoSave 1 --moralisCloudfolder ./cloud_functions"
   },
   "dependencies": {
+    "@headlessui/react": "^1.6.5",
     "@walletconnect/web3-provider": "^1.7.8",
     "@web3auth/web3auth": "^1.1.0",
+    "antd": "^4.21.7",
     "magic-sdk": "^8.1.1",
-    "@headlessui/react": "^1.6.5",
-    "moralis": "^1.8.1",
+    "moralis": "^1.9.0",
     "next": "12.1.5",
+    "node-fetch": "^3.2.9",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-moralis": "^1.4.0",
@@ -22,6 +25,7 @@
     "web3uikit": "^0.1.164"
   },
   "devDependencies": {
+    "@types/whatwg-fetch": "^0.0.33",
     "autoprefixer": "^10.4.7",
     "eslint": "8.13.0",
     "eslint-config-next": "12.1.5",

@@ -6,7 +6,7 @@ import { Link } from "react-scroll";
 function Navbar() {
 	const [isOpen, setIsOpen] = useState(false);
 	return (
-		<div>
+		<div className="pb-20">
 			<nav className=" shadow-sm fixed w-full z-10">
 				<div className="w-full">
 					<div className="flex items-center h-20 w-full">
