@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { Transition } from "@headlessui/react";
 import { ConnectButton } from "web3uikit"
-import { Link } from "react-scroll";
+import Link from "next/link";
 
 function Navbar() {
 	const [isOpen, setIsOpen] = useState(false);
 	return (
 		<div className="pb-20">
-			<nav className=" shadow-sm fixed w-full z-10">
+			<nav className=" shadow-sm fixed w-full z-10 bg-white">
 				<div className="w-full">
 					<div className="flex items-center h-20 w-full">
 						<div className="flex items-center  mx-20  justify-between w-full">
@@ -19,45 +19,32 @@ function Navbar() {
 							<div className="hidden md:block">
 								<div className="ml-10 flex items-baseline space-x-4">
 									<Link
-										activeClass="Home"
-										to="about"
-										smooth={true}
-										offset={50}
-										duration={500}
-										className="cursor-pointer text-violet-900 font-semibold px-3 py-2 text-md hover:font-black"
+										href="/"
+										passHref
+										
 									>
-										Home
+										<p className="cursor-pointer text-violet-900 font-semibold px-3 py-2 text-md hover:font-black">Home</p>
 									</Link>
 									<Link
-										activeClass="about"
-										to="about"
-										smooth={true}
-										offset={50}
-										duration={500}
-										className="cursor-pointer hover:bg-violet-900 text-black hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+										href="/launch"
+										passHref
+										
 									>
-										About
+										<p className="cursor-pointer  hover:bg-violet-900 text-black hover:text-white px-3 py-2 rounded-md text-sm font-semibold">Create NFT</p>
+										
 									</Link>
 									<Link
-										activeClass="work"
-										to="work"
-										smooth={true}
-										offset={50}
-										duration={500}
-										className="cursor-pointer hover:bg-violet-900 text-black hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+										href="/"
+										passHref
 									>
-										Library
+										<p className="cursor-pointer hover:bg-violet-900 text-black hover:text-white px-3 py-2 rounded-md text-sm font-semibold">Library</p>
 									</Link>
 
 									<Link
-										activeClass="Services"
-										to="work"
-										smooth={true}
-										offset={50}
-										duration={500}
-										className="cursor-pointer hover:bg-violet-900 text-black hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+										href="/"
+										passHref
 									>
-										Services
+										<p className="cursor-pointer hover:bg-violet-900 text-black hover:text-white px-3 py-2 rounded-md text-sm font-semibold">Services</p>
 									</Link>
 
 									<ConnectButton moralisAuth={false}/>
