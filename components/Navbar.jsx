@@ -26,18 +26,18 @@ function Navbar() {
 										<p className="cursor-pointer text-violet-900 font-semibold px-3 py-2 text-md hover:font-black">Home</p>
 									</Link>
 									<Link
-										href="/launch"
+										href="/collections"
 										passHref
 										
 									>
-										<p className="cursor-pointer  hover:bg-violet-900 text-black hover:text-white px-3 py-2 rounded-md text-sm font-semibold">Create NFT</p>
+										<p className="cursor-pointer  hover:bg-violet-900 text-black hover:text-white px-3 py-2 rounded-md text-sm font-semibold">Collections</p>
 										
 									</Link>
 									<Link
-										href="/"
+										href="/launch"
 										passHref
 									>
-										<p className="cursor-pointer hover:bg-violet-900 text-black hover:text-white px-3 py-2 rounded-md text-sm font-semibold">Library</p>
+										<p className="cursor-pointer hover:bg-violet-900 text-black hover:text-white px-3 py-2 rounded-md text-sm font-semibold">Create NFT</p>
 									</Link>
 
 									<Link
