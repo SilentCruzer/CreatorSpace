@@ -23,7 +23,8 @@
     "react-dom": "^18.2.0",
     "react-moralis": "^1.4.0",
     "react-scroll": "^1.8.7",
-    "web3uikit": "^0.1.164"
+    "react-scripts": "4.0.0",
+    "web3uikit": "^0.1.75"
   },
   "devDependencies": {
     "@types/whatwg-fetch": "^0.0.33",
