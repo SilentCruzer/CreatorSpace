@@ -48,7 +48,7 @@ const Rightbar = () => {
         >
       </Input>
 
-    <div className="bg-gray-700 rounded-2xl max-w-xs p-5 mt-2 font-bold overflow-hidden">
+    <div className="bg-gray-700 rounded-2xl max-w-xs p-5 mt-5 font-bold overflow-hidden">
       <h1 className="text-white">News For You</h1>
       {trends.map((e) => {
           return(

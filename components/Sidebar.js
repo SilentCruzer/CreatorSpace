@@ -25,21 +25,21 @@ const Sidebar = () => {
             <Icon fill="#ffffff" size={33} svg="twitter" />
           </div>
 
-          <Link href="/" passHref className="link">
+          <Link href="/space" passHref className="link">
             <div className={menuItem}>
               <Icon fill="#ffffff" size={33} svg="list" />
               <div className="pt-2 text-white">Home</div>
             </div>
           </Link>
 
-          <Link  href="/" passHref  className="link">
+          <Link  href="/space/profile" passHref  className="link">
             <div className={menuItem}>
               <Icon fill="#ffffff" size={33} svg="user" />
               <div className="pt-2">Profile</div>
             </div>
           </Link>
 
-          <Link  href="/" passHref  className="link">
+          <Link  href="/space/settings" passHref  className="link">
             <div className={menuItem}>
               <Icon fill="#ffffff" size={33} svg="cog" />
               <div className="pt-2">Settings</div>

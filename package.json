@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@headlessui/react": "^1.6.5",
+    "@material-tailwind/react": "^1.0.8",
     "@walletconnect/web3-provider": "^1.7.8",
     "@web3auth/web3auth": "^1.1.0",
     "antd": "^4.21.7",
@@ -22,8 +23,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-moralis": "^1.4.0",
-    "react-scroll": "^1.8.7",
     "react-scripts": "4.0.0",
+    "react-scroll": "^1.8.7",
     "web3uikit": "^0.1.75"
   },
   "devDependencies": {

@@ -1,15 +1,33 @@
 import '../styles/globals.css'
 import { MoralisProvider } from "react-moralis";
-import { useRouter } from 'next/router';
 import Head from 'next/head'
 import Navbar from '../components/Navbar'
+import Sidebar from '../components/Sidebar';
+import Rightbar from '../components/Rightbar';
 
 const APP_ID = process.env.NEXT_PUBLIC_APP_ID
 const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL
 
-function MyApp({ Component, pageProps }) {
-  const router = useRouter();
+function MyApp({ Component, pageProps, router }) {
   const showHeader = router.pathname === '/space' ? false : true;
+
+  if (router.pathname.startsWith('/space')){
+    return (
+      <MoralisProvider appId={APP_ID} serverUrl={SERVER_URL}>
+      <div className="flex justify-between bg-gray-800 h-screen">
+        <div className="sticky border-r-2 border-gray-700 h-screen w-1/6">
+          <Sidebar />
+        </div>
+            <div className="w-full h-full">
+            <Component {...pageProps} />
+            </div>
+        <div className=" sticky border-l-2 border-gray-700 h-screen w-1/4">
+          <Rightbar />
+        </div>
+    </div>
+    </MoralisProvider>
+  )
+  }
   return (
     <MoralisProvider appId={APP_ID} serverUrl={SERVER_URL}>
       <Head>
