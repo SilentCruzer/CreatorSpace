@@ -14,8 +14,8 @@ function MyApp({ Component, pageProps, router }) {
   if (router.pathname.startsWith('/space')){
     return (
       <MoralisProvider appId={APP_ID} serverUrl={SERVER_URL}>
-      <div className="flex justify-between bg-gray-800 sm:h-screen">
-        <div className="sticky border-r-2 border-gray-700 w-1/3">
+      <div className="flex justify-between bg-neutral-900 h-full">
+        <div className="sticky w-1/3 md:1/3">
           <Sidebar />
         </div>
             <div className="w-full h-full">

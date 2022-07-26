@@ -5,10 +5,8 @@ import { defaultImgs } from '../../constants/defaultImgs';
 
 const Space = () => {
   return (
-      <div>
-        <div className=" min-w-max p-5 bg-gray-800 sticky text-white font-bold">Home</div>
-        <div>
-          <div className="flex space-x-10 border border-gray-700 p-5">
+      <div className="py-10 flex-col gap-10">
+          <div className="flex space-x-2 bg-neutral-800 p-5 rounded-3xl">
             <img src={defaultImgs[0]} className="rounded-full w-12 h-12"></img>
             <div className='w-5/6'>
               <textarea
@@ -26,8 +24,6 @@ const Space = () => {
               </div>
             </div>
           </div>
-        </div>
-        <PostInFeed profile={false}/>
       </div>
   )
 }
