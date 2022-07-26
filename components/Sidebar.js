@@ -15,14 +15,14 @@ const Sidebar = () => {
     }
   }, [isInitialized]);
 
-  const menuItem = "flex justify-start gap-2 font-semibold text-sm p-2 mr-5 m-1 rounded-full text-white hover:bg-gray-400 hover:cursor-pointer"
+  const menuItem = "flex justify-start gap-2 font-semibold text-sm p-2 mr-5 m-1 rounded-full text-white hover:bg-gray-400 hover:cursor-pointer text-xl"
 
   return (
     <div className="h-full flex justify-center">
       <div className="justify-center flex flex-col h-80 items-end">
         <div className="flex flex-col">
           <div className="flex pb-10  gap-14 justify-start">
-            <Icon fill="#ffffff" size={33} svg="twitter" />
+            <Icon fill="#ffffff" size={33} svg="eth" />
           </div>
 
           <Link href="/space" passHref className="link">
