@@ -6,56 +6,62 @@ import youtube from "../images/youtube.png";
 import js from "../images/js.png";
 import { Input } from "web3uikit";
 import Image from "next/image";
+import { AiOutlineArrowRight } from "react-icons/ai";
 
 
 const Rightbar = () => {
   const trends = [
     {
-      img: spaceshooter,
-      text: "Learn how to build a Web3 FPS game using unity...",
-      link: "https://moralis.io/moralis-projects-learn-to-build-a-web3-space-fps-game/",
+      text: "Votaliy Akterskiy",
+      des: "@T.xtd' albums",
+      img: "https://www.rollingstone.com/wp-content/uploads/2022/02/5-Tips-for-Any-Artist-Looking-to-Release-New-Music.png",
     },
     {
-      img: netflix,
-      text: "The fisrt Moralis Project! Let's Netflix and chill...",
-      link: "https://moralis.io/moralis-projects-learn-to-build-a-web3-netflix-clone/",
+      text: "Maksym Karafizi",
+      des: "@loordOman",
+      img: "https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bXVzaWMlMjBhcnRpc3R8ZW58MHx8MHx8&w=1000&q=80",
     },
     {
-      img: academy,
-      text: "Master DeFi in 2022. Start  at the Moralis Academy...",
-      link: "https://academy.moralis.io/courses/defi-101",
+      text: "Evgeniy Alexandrov",
+      des: "@manOwar albums",
+      img: "https://media.istockphoto.com/photos/male-singer-singing-in-recording-studio-picture-id1307465039?b=1&k=20&m=1307465039&s=170667a&w=0&h=AoSO6OhrOOj-ZD8_JHFnyOo2zLqDy8uE4sOBh8DyDnk=",
     },
     {
-      img: js,
-      text: "Become a Web3 Developer with just simple JS...",
-      link: "https://academy.moralis.io/all-courses",
+      text: "Rosaline Kumbirai",
+      des: "@simleEgh",
+      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRabkDodpPhjuZoRyKuYjhhfqktp4Aj9Ko3NGF_Jzr9h998wlsI9PZ7_sz1V35wQo8gNTk&usqp=CAU",
     },
     {
-      img: youtube,
-      text: "Best youtube channel to learn about Web3...",
-      link: "https://www.youtube.com/channel/UCgWS9Q3P5AxCWyQLT2kQhBw",
+      text: "Arthur Marston",
+      des: "@sdkO99n",
+      img: "https://s2982.pcdn.co/wp-content/uploads/2022/02/rapper-musician-performer-MC-featured.jpg.optimal.jpg",
     },
   ];
 
   return (
     <>
-    <div className="p-6">
-      <Input
-        label="Search Twitter"
-        name ="Search Twitter"
-        prefixIcon="search"
-        labelBgColor="#1f2937" 
-        >
-      </Input>
-
-    <div className="bg-gray-700 rounded-2xl max-w-xs p-5 mt-5 font-bold overflow-hidden">
-      <h1 className="text-white">News For You</h1>
+    <div className="py-3">
+    <div className="bg-neutral-800 rounded-2xl max-w-xs p-5 mt-5 font-bold overflow-hidden">
+      <h1 className="text-white text-xl">Recommendations</h1>
       {trends.map((e) => {
           return(
             <>
-            <div className="flex justify-start items-center gap-5 mt-4 p-2 hover:cursor-pointer hover:bg-gray-400" onClick={() => window.open(e.link)}>
-                <Image  width={150} height={100} src={e.img} className="rounded-lg"></Image>
+            <div className="flec-col space-y-2 bg-zinc-800 rounded-2xl hover:cursor-pointer shadow-lg">
+            <div className="flex justify-start items-center gap-5 mt-4 p-2 hover:cursor-pointer" onClick={() => window.open(e.link)}>
+              <img
+              src={e.img}
+              className=" rounded-3xl object-cover h-14 w-14"
+            />
+            <div className="flex-col space-y-2">
               <div className="trendText text-sm text-white">{e.text}</div>
+              <div className="trendText text-xs text-yellow-500"><span className="text-gray-400">Recommends </span>{e.des}</div>
+            </div>
+              
+            </div>
+            <div className="flex justify-end p-2">
+              <AiOutlineArrowRight className="text-white" />
+            </div>
+            
             </div>
             </>
           )
