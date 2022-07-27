@@ -21,7 +21,7 @@ const Stories = () => {
 
           <div className="flex-col justify-center space-y-2">
           <img
-              src="https://media.istockphoto.com/photos/he-has-some-amazing-musical-talents-picture-id1189316258?k=20&m=1189316258&s=612x612&w=0&h=itGyYzAT5H_JF7FTfc8ogvUCaSxjbXX9B0AwMYHiNxg="
+              src="https://iso.500px.com/wp-content/uploads/2016/02/william_selviz_festival_photography_2016_11-1500x1000.jpg"
               className=" rounded-3xl border-solid border-gray-700 border-2 -mt-3 h-24 w-24 object-cover"
             />
             <h1 className='text-white text-center'>Amanda</h1>
@@ -29,10 +29,26 @@ const Stories = () => {
 
           <div className="flex-col justify-center space-y-2">
           <img
-              src="https://media.istockphoto.com/photos/he-has-some-amazing-musical-talents-picture-id1189316258?k=20&m=1189316258&s=612x612&w=0&h=itGyYzAT5H_JF7FTfc8ogvUCaSxjbXX9B0AwMYHiNxg="
+              src="https://media.istockphoto.com/vectors/red-sound-wave-equalizer-vector-design-vector-id1093770298?k=20&m=1093770298&s=612x612&w=0&h=V9_2cEGNRbPc4yDEWJHCBct-zYGD3VA23PO-oXQ0OUM="
               className=" rounded-3xl border-solid border-gray-700 border-2 -mt-3 h-24 w-24 object-cover"
             />
-            <h1 className='text-white text-center'>Amanda</h1>
+            <h1 className='text-white text-center'>Synth</h1>
+          </div>
+
+          <div className="flex-col justify-center space-y-2">
+          <img
+              src="https://media.istockphoto.com/photos/light-painting-picture-id508463316?k=20&m=508463316&s=612x612&w=0&h=ORo_K08uqlQYWlW5jd1R2750d2vsQMjuZQA2xSZ46no="
+              className=" rounded-3xl border-solid border-gray-700 border-2 -mt-3 h-24 w-24 object-cover"
+            />
+            <h1 className='text-white text-center'>Kyli3</h1>
+          </div>
+
+          <div className="flex-col justify-center space-y-2">
+          <img
+              src="https://images.unsplash.com/photo-1517334409808-8eb6c9db6b2e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Nnx8ZmlyZSUyMHNob3d8ZW58MHx8MHx8&w=1000&q=80"
+              className=" rounded-3xl border-solid border-gray-700 border-2 -mt-3 h-24 w-24 object-cover"
+            />
+            <h1 className='text-white text-center'>FlameEthan</h1>
           </div>
 
           <div className="flex-col justify-center space-y-2">
@@ -40,23 +56,7 @@ const Stories = () => {
               src="https://media.istockphoto.com/photos/he-has-some-amazing-musical-talents-picture-id1189316258?k=20&m=1189316258&s=612x612&w=0&h=itGyYzAT5H_JF7FTfc8ogvUCaSxjbXX9B0AwMYHiNxg="
               className=" rounded-3xl border-solid border-gray-700 border-2 -mt-3 h-24 w-24 object-cover"
             />
-            <h1 className='text-white text-center'>Amanda</h1>
-          </div>
-
-          <div className="flex-col justify-center space-y-2">
-          <img
-              src="https://media.istockphoto.com/photos/he-has-some-amazing-musical-talents-picture-id1189316258?k=20&m=1189316258&s=612x612&w=0&h=itGyYzAT5H_JF7FTfc8ogvUCaSxjbXX9B0AwMYHiNxg="
-              className=" rounded-3xl border-solid border-gray-700 border-2 -mt-3 h-24 w-24 object-cover"
-            />
-            <h1 className='text-white text-center'>Amanda</h1>
-          </div>
-
-          <div className="flex-col justify-center space-y-2">
-          <img
-              src="https://media.istockphoto.com/photos/he-has-some-amazing-musical-talents-picture-id1189316258?k=20&m=1189316258&s=612x612&w=0&h=itGyYzAT5H_JF7FTfc8ogvUCaSxjbXX9B0AwMYHiNxg="
-              className=" rounded-3xl border-solid border-gray-700 border-2 -mt-3 h-24 w-24 object-cover"
-            />
-            <h1 className='text-white text-center'>Amanda</h1>
+            <h1 className='text-white text-center'>Muhadreh</h1>
           </div>
 
         </div>

@@ -87,13 +87,13 @@ const Sidebar = () => {
 
           <div className="flex flex-row gap-2">
             <img
-              src="https://media.istockphoto.com/photos/he-has-some-amazing-musical-talents-picture-id1189316258?k=20&m=1189316258&s=612x612&w=0&h=itGyYzAT5H_JF7FTfc8ogvUCaSxjbXX9B0AwMYHiNxg="
+              src="https://thumbs.dreamstime.com/b/solo-fire-artist-perform-infinite-spirals-spinning-flaming-pois-dark-sky-night-outdoors-blaze-200685327.jpg"
               className=" rounded-3xl border-solid border-gray-700 border-2 -mt-3 h-16 w-16 object-cover"
             />
             <div className="flex flex-row justify-between  w-full">
               <div className="flex-col">
-                <h1 className=" text-white text-xl">Dexter</h1>
-                <h1 className="text-sm text-gray-400">3 albums . 240 NFTs</h1>
+                <h1 className=" text-white text-xl">SonarEth</h1>
+                <h1 className="text-sm text-gray-400">4 albums . 40 NFTs</h1>
               </div>
               <h1 className="text-sm text-gray-400 border border-gray-400 h-fit rounded p-1 px-2 inline-block align-middle">X</h1>
             </div>
@@ -101,13 +101,13 @@ const Sidebar = () => {
 
           <div className="flex flex-row gap-2">
             <img
-              src="https://media.istockphoto.com/photos/he-has-some-amazing-musical-talents-picture-id1189316258?k=20&m=1189316258&s=612x612&w=0&h=itGyYzAT5H_JF7FTfc8ogvUCaSxjbXX9B0AwMYHiNxg="
+              src="https://cdn.pixabay.com/photo/2018/06/10/11/38/festival-3466251__340.jpg"
               className=" rounded-3xl border-solid border-gray-700 border-2 -mt-3 h-16 w-16 object-cover"
             />
             <div className="flex flex-row justify-between  w-full">
               <div className="flex-col">
-                <h1 className=" text-white text-xl">Dexter</h1>
-                <h1 className="text-sm text-gray-400">3 albums . 240 NFTs</h1>
+                <h1 className=" text-white text-xl">TriageWaves</h1>
+                <h1 className="text-sm text-gray-400">3 albums . 130 NFTs</h1>
               </div>
               <h1 className="text-sm text-gray-400 border border-gray-400 h-fit rounded p-1 px-2 inline-block align-middle">X</h1>
             </div>
@@ -115,13 +115,13 @@ const Sidebar = () => {
 
           <div className="flex flex-row gap-2">
             <img
-              src="https://media.istockphoto.com/photos/he-has-some-amazing-musical-talents-picture-id1189316258?k=20&m=1189316258&s=612x612&w=0&h=itGyYzAT5H_JF7FTfc8ogvUCaSxjbXX9B0AwMYHiNxg="
+              src="https://i.pinimg.com/736x/f4/c0/2d/f4c02d7d87b9b370029978487b56c481.jpg"
               className=" rounded-3xl border-solid border-gray-700 border-2 -mt-3 h-16 w-16 object-cover"
             />
             <div className="flex flex-row justify-between  w-full">
               <div className="flex-col">
-                <h1 className=" text-white text-xl">Dexter</h1>
-                <h1 className="text-sm text-gray-400">3 albums . 240 NFTs</h1>
+                <h1 className=" text-white text-xl">Spectrum</h1>
+                <h1 className="text-sm text-gray-400">5 albums . 120 NFTs</h1>
               </div>
               <h1 className="text-sm text-gray-400 border border-gray-400 h-fit rounded p-1 px-2 inline-block align-middle">X</h1>
             </div>
