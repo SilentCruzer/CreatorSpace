@@ -23,7 +23,7 @@ function MyApp({ Component, pageProps, router }) {
             <div className="w-full h-full">
             <Component {...pageProps} />
             </div>
-        <div className=" sticky w-1/3 ml-5">
+        <div className=" sticky w-1/3 ml-5 pr-4 border-r-2 border-neutral-800">
           <Rightbar />
         </div>
     </div>
