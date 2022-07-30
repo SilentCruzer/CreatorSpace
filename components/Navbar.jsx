@@ -7,13 +7,13 @@ function Navbar() {
 	const [isOpen, setIsOpen] = useState(false);
 	return (
 		<div className="pb-20">
-			<nav className=" shadow-sm fixed w-full z-10 bg-white">
+			<nav className=" shadow-sm fixed w-full z-10 bg-zinc-900">
 				<div className="w-full">
 					<div className="flex items-center h-20 w-full">
 						<div className="flex items-center  mx-20  justify-between w-full">
 							<div className="flex justify-center items-center flex-shrink-0 ">
-								<h1 className=" font-bold text-xl cursor-pointer">
-									Creator<span className="text-violet-900">Space</span>
+								<h1 className=" font-bold text-xl cursor-pointer text-white">
+									Creator<span className="text-violet-800">Space</span>
 								</h1>
 							</div>
 							<div className="hidden md:block">
@@ -23,28 +23,28 @@ function Navbar() {
 										passHref
 										
 									>
-										<p className="cursor-pointer text-violet-900 font-semibold px-3 py-2 text-md hover:font-black">Home</p>
+										<p className="cursor-pointer text-violet-800 font-semibold px-3 py-2 text-md hover:font-white">Home</p>
 									</Link>
 									<Link
 										href="/collections"
 										passHref
 										
 									>
-										<p className="cursor-pointer  hover:bg-violet-900 text-black hover:text-white px-3 py-2 rounded-md text-sm font-semibold">Collections</p>
+										<p className="cursor-pointer  hover:bg-violet-900 text-white hover:text-white px-3 py-2 rounded-md text-sm font-semibold">Collections</p>
 										
 									</Link>
 									<Link
 										href="/launch"
 										passHref
 									>
-										<p className="cursor-pointer hover:bg-violet-900 text-black hover:text-white px-3 py-2 rounded-md text-sm font-semibold">Create NFT</p>
+										<p className="cursor-pointer hover:bg-violet-900 text-white hover:text-white px-3 py-2 rounded-md text-sm font-semibold">Create NFT</p>
 									</Link>
 
 									<Link
 										href="/"
 										passHref
 									>
-										<p className="cursor-pointer hover:bg-violet-900 text-black hover:text-white px-3 py-2 rounded-md text-sm font-semibold">Services</p>
+										<p className="cursor-pointer hover:bg-violet-900 text-white hover:text-white px-3 py-2 rounded-md text-sm font-semibold">Services</p>
 									</Link>
 
 									<ConnectButton moralisAuth={false}/>
@@ -111,7 +111,7 @@ function Navbar() {
 						<div className="md:hidden" id="mobile-menu">
 							<div
 								ref={ref}
-								className="bg-white px-2 pt-2 pb-3 space-y-1 sm:px-3"
+								className="bg-zinc-900 px-2 pt-2 pb-3 space-y-1 sm:px-3"
 							>
 								<Link
 									href="/home"
@@ -120,7 +120,7 @@ function Navbar() {
 									smooth={true}
 									offset={50}
 									duration={500}
-									className="cursor-pointer hover:bg-blue-600 text-black hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+									className="cursor-pointer hover:bg-blue-600 text-white hover:text-white block px-3 py-2 rounded-md text-base font-medium"
 								>
 									Home
 								</Link>
@@ -131,7 +131,7 @@ function Navbar() {
 									smooth={true}
 									offset={50}
 									duration={500}
-									className="cursor-pointer hover:bg-blue-600 text-black hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+									className="cursor-pointer hover:bg-blue-600 text-white hover:text-white block px-3 py-2 rounded-md text-base font-medium"
 								>
 									About
 								</Link>
@@ -143,7 +143,7 @@ function Navbar() {
 									smooth={true}
 									offset={50}
 									duration={500}
-									className="cursor-pointer hover:bg-blue-600 text-black hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+									className="cursor-pointer hover:bg-blue-600 text-white hover:text-white block px-3 py-2 rounded-md text-base font-medium"
 								>
 									Projects
 								</Link>
@@ -154,7 +154,7 @@ function Navbar() {
 									smooth={true}
 									offset={50}
 									duration={500}
-									className="cursor-pointer hover:bg-blue-600 text-black hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+									className="cursor-pointer hover:bg-blue-600 text-white hover:text-white block px-3 py-2 rounded-md text-base font-medium"
 								>
 									Services
 								</Link>

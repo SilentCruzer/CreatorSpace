@@ -40,8 +40,10 @@ function MyApp({ Component, pageProps, router }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {showHeader && <Navbar />}
+      <div className=' bg-zinc-900 h-screen'>
+        <Component {...pageProps} />
+      </div>
       
-      <Component {...pageProps} />
     </MoralisProvider>
   );
 }
