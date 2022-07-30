@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useMoralis } from "react-moralis";
+import Banner from "../components/collections/Banner";
+import Trending from "../components/collections/Trending";
 
 function Collections() {
   const { Moralis, isInitialized } = useMoralis();
@@ -12,12 +14,15 @@ function Collections() {
     const query = new Moralis.Query(dbNFTs);
     const collectionDB = await query.find();
     for (const item in collectionDB) {
-        if(data[collectionDB[item].attributes.collectionName] != undefined){
-                data[collectionDB[item].attributes.collectionName].push(collectionDB[item].attributes);
-        } else{
-            data[collectionDB[item].attributes.collectionName] = new Array(collectionDB[item].attributes);
-        }
-      
+      if (data[collectionDB[item].attributes.collectionName] != undefined) {
+        data[collectionDB[item].attributes.collectionName].push(
+          collectionDB[item].attributes
+        );
+      } else {
+        data[collectionDB[item].attributes.collectionName] = new Array(
+          collectionDB[item].attributes
+        );
+      }
     }
     setAllCollection(data);
   };
@@ -28,28 +33,26 @@ function Collections() {
     }
   }, [isInitialized]);
 
-  console.log(allCollections)
   return (
-    <div className="py-12 px-36">
-      <h1 className="text-4xl pb-10">Collections</h1>
-      <div className="grid grid-cols-4 gap-4">
-        {Object.keys(allCollections).map((collectionName, index) => (
-          <Link
-            href={{
-              pathname: `/collection/${collectionName}`,
-              query: { metadata:JSON.stringify(allCollections[collectionName])},
-            }}
-            as={`/collection/${collectionName}`}
-            key={index}
-          >
-            <a className="block p-6 max-w-sm  rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-100 dark:border-gray-700 dark:hover:bg-gray-400">
-              <h5 className="mb-2 text-2xl font-bold tracking-tight">
-                {collectionName}
-              </h5>
-            </a>
-          </Link>
-        ))}
-      </div>
+    <div className="h-full flex flex-col gap-2 px-16">
+      <Banner />
+        <ul className="flex flex-wrap gap-4 text-lg font-medium text-center text-gray-500 dark:text-gray-400 items-center">
+          <li className="mr-2">
+            <h1
+              className="inline-block  text-white font-semibold text-3xl rounded-lg"
+            >
+              Trending
+            </h1>
+          </li>
+          <li className="mr-2">
+            <h1
+              className="inline-block rounded-lg hover:text-gray-900 text-2xl hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white"
+            >
+              Recently Listed
+            </h1>
+          </li>
+        </ul>
+      <Trending />
     </div>
   );
 }
