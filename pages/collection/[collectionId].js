@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import ArtistBanner from "../../components/collections/ArtistBanner";
 import ArtistTrending from "../../components/collections/ArtistTrending";
 
-const ViewColection = (props) => {
+const ViewCollection = (props) => {
   // const router = useRouter();
   // const metadata = JSON.parse(router.query.metadata);
   // console.log(metadata);
@@ -33,4 +33,4 @@ const ViewColection = (props) => {
   );
 };
 
-export default ViewColection;
+export default ViewCollection;

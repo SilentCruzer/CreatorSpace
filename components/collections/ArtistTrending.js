@@ -101,9 +101,12 @@ const ArtistTrending = () => {
                         <h1 className="text-gray-500 text-sm">{item.price}</h1>
                     </div>
                 </div>
+                <Link href={`/collection/0/nft/${index}`} passHref>
                 <div className=" text-white font-bold text-center border rounded-3xl border-gray-400 p-1 hover:bg-neutral-800 hover:shadow-inner">
                         View
                     </div>
+                </Link>
+                
             </div>
           </div>
         </Link>
