@@ -79,7 +79,7 @@ const tmpData = [
 
 const ArtistTrending = () => {
   return (
-    <div className="grid 2xl:grid-cols-5 xl:grid-cols-4 gap-16 pb-10 pt-5">
+    <div className="grid 2xl:grid-cols-5 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 gap-16 pb-10 pt-5">
       {tmpData.map((item, index) => (
         <Link key={index} href={`/collection/${index}`} passHref>
           <div className="max-w-sm bg-black rounded-3xl shadow-2xl hover:shadow-neutral-800 hover:cursor-pointer">
