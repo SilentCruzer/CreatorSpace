@@ -46,7 +46,7 @@ function Collections() {
           </li>
           <li className="mr-2">
             <h1
-              className="inline-block rounded-lg hover:text-gray-900 text-2xl hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white"
+              className="inline-block rounded-lg text-white hover:text-gray-900 text-2xl hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-white"
             >
               Recently Listed
             </h1>

@@ -39,7 +39,7 @@ const Trending = () => {
     <div className="grid 2xl:grid-cols-5 xl:grid-cols-4 gap-16 pb-10 pt-5">
       {tmpData.map((item,index) => (
           <Link key={index} href={`/collection/${index}`} passHref>
-          <div className="h-96 rounded-3xl shadow-2xl hover:shadow-neutral-800 relative">
+          <div className="h-96 rounded-3xl shadow-2xl hover:shadow-neutral-800 relative hover:cursor-pointer">
             <img src={item.banner} className="w-full h-full rounded-3xl object-cover filter contrast-125"></img>
           <div className="flex flex-col justify-end h-full w-full p-10 gap-2 absolute bottom-0">       
             <h1 className="text-white text-2xl font-bold">{item.genre}</h1>
