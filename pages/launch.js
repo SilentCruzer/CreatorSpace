@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { create } from "ipfs-http-client";
 import { useMoralis } from "react-moralis";
 import { NFTStorage, File } from 'nft.storage';
 
