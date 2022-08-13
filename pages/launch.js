@@ -1,12 +1,15 @@
 import { useState } from "react";
 import { create } from "ipfs-http-client";
 import { useMoralis } from "react-moralis";
+import { NFTStorage, File } from 'nft.storage';
 
 const Launch = () => {
   const { user, isWeb3Enabled, authenticate, isAuthenticated, Moralis } = useMoralis();
-  const client = create("https://ipfs.infura.io:5001/api/v0");
-  const [fileUrl, setFileUrl] = useState("");
-  const [imageIpfs, setImageIpfs] = useState("");
+  const client = new NFTStorage({ token: process.env.NEXT_PUBLIC_NFT_STORAGE })
+  const [fileUrl, setFileUrl] = useState();
+  const [mp4Ipfs, setMp4Ipfs] = useState("");
+  const [imageFile, setImageFile] = useState();
+  const [mp4File, setMp4File] = useState();
   const [name, setName] = useState("");
   const [externalLink, setExternalLink] = useState("");
   const [description, setDescription] = useState("");
@@ -15,17 +18,17 @@ const Launch = () => {
     { trait_type: "", value: "" },
   ]);
 
-  async function onChange(e) {
+  const handleImageFile = (e) => {
     const file = e.target.files[0];
-    try {
-      const added = await client.add(file);
-      const url = `https://ipfs.infura.io/ipfs/${added.path}`;
-      setFileUrl(url);
-      setImageIpfs(`ipfs://${added.path}`);
-    } catch (error) {
-      console.log("Error uploading file: ", error);
-    }
+    setFileUrl(URL.createObjectURL(file));
+    setImageFile(file);
   }
+
+  const handleMp4File = (e) => {
+    const file = e.target.files[0];
+    setMp4File(file);
+  }
+
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -63,15 +66,25 @@ const Launch = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const metadata = {
-      name: name,
-      external_link: externalLink,
-      description: description,
-      image: imageIpfs,
-      attributes: attributesList,
-    };
 
-    const cid = await client.add(JSON.stringify(metadata));
+    try {
+      const someData = new Blob([mp4File])
+      const audio = await client.storeBlob(someData);
+      setMp4Ipfs(audio.url);
+    } catch (error) {
+      console.log("Error uploading file: ", error);
+    }
+
+    const cid = await client.store(
+      {
+        name: name,
+        external_link: externalLink,
+        description: description,
+        image: imageFile,
+        animation_url: mp4File,
+        attributes: attributesList,
+      },
+    );
     const dbNFTs = Moralis.Object.extend("Collections");
     const newNft = new dbNFTs();
     newNft.set("collectionName", collection)
@@ -79,26 +92,28 @@ const Launch = () => {
     newNft.set("nftName", name);
     newNft.set("externalLink", externalLink)
     newNft.set("desciption", description)
-    newNft.set("image", imageIpfs)
+    newNft.set("music", mp4Ipfs)
     newNft.set("attributes", JSON.stringify(attributesList))
-    newNft.set("tokenURI", `ipfs://${cid.path}`)
+    newNft.set("tokenURI", cid.url)
 
     await newNft.save();
   };
 
+  console.log(isWeb3Enabled)
+
   const inputStyle =
-    "form-control block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border-2 border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-gray-400 focus:outline-none";
+    "form-control bg-transparent block w-full px-3 py-1.5 text-base font-normal text-gray-200 bg-clip-padding border-2 border-solid border-neutral-700 rounded transition ease-in-out m-0 focus:text-white  focus:border-gray-400 focus:outline-none";
 
   return (
-    <div className=" px-64 py-10 font-bold">
+    <div className=" px-64 py-10 font-bold text-white">
       {isWeb3Enabled ? (
         <div>
-          <h1 className="text-4xl">Create New NFT</h1>
-          <h3 className="pt-5 text-gray-500">
+          <h1 className="text-4xl text-white font-bold">Create New NFT</h1>
+          <h3 className="pt-5 text-gray-200">
             {" "}
             <span className=" text-red-600">*</span> Required Fields
           </h3>
-          <h2 className=" font-bold text-2xl pt-5">
+          <h2 className=" font-bold text-2xl pt-5 text-white">
             Upload Image or Gif<span className=" text-red-600"> *</span>
           </h2>
           <form onSubmit={onSubmit}>
@@ -106,9 +121,9 @@ const Launch = () => {
               <div>
                 <div className="m-4">
                   <div className="flex items-center justify-center w-full">
-                    <label className="flex flex-col w-96 h-80 border-4 border-blue-200 border-dashed hover:bg-gray-100 hover:border-gray-30 rounded-xl">
+                    <label className="flex flex-col w-96 h-80 border-4 border-neutral-700 border-dashed hover:bg-neutral-700 hover:border-gray-300 rounded-xl">
                       <div className="flex flex-col items-center m-auto">
-                        {fileUrl != "" ? (
+                        {fileUrl != undefined ? (
                           <div className="hover:bg-gray-100 hover:border-gray-30">
                             <img
                               src={fileUrl}
@@ -140,7 +155,7 @@ const Launch = () => {
                       <input
                         type="file"
                         className="opacity-0"
-                        onChange={onChange}
+                        onChange={handleImageFile}
                       />
                     </label>
                   </div>
@@ -148,8 +163,23 @@ const Launch = () => {
               </div>
             </div>
 
+ {/* Input Box- Music file */}
+ <h2 className=" font-bold text-xl pt-5 text-white">
+              Attach music<span className=" text-red-600"> *</span>
+            </h2>
+            <input
+              type="file"
+              className=" file:bg-violet-900 file:hover:bg-violet-600 file:px-6 file:py-3 file:m-5 mt-5
+              file:border-none file:rounded-full file:text-white file:cursor-pointer 
+              bg-neutral-800 text-white/80 rounded-full cursor-pointer shadow-xl pr-5"
+              id="exampleFormControlInput1"
+              placeholder="Item Name"
+              onChange={handleMp4File}
+            />
+
+
             {/* Input Box- Name */}
-            <h2 className=" font-bold text-1xl pt-5">
+            <h2 className=" font-bold text-xl pt-5 text-white">
               Name<span className=" text-red-600"> *</span>
             </h2>
             <input
@@ -160,8 +190,10 @@ const Launch = () => {
               placeholder="Item Name"
             />
 
+
+
             {/* Input Box- External Link */}
-            <h2 className=" font-bold text-1xl pt-8">External Link</h2>
+            <h2 className=" font-bold text-xl pt-8 text-white">External Link</h2>
             <input
               type="text"
               onChange={(e) => handleExternalLinkChange(e)}
@@ -169,9 +201,10 @@ const Launch = () => {
               id="exampleFormControlInput1"
               placeholder="External Link"
             />
+            
 
             {/* Input Box- Description */}
-            <h2 className=" font-bold text-1xl pt-8">Description</h2>
+            <h2 className=" font-bold text-xl pt-8 text-white">Description</h2>
             <input
               type="text"
               onChange={(e) => handleDescriptionChange(e)}
@@ -181,7 +214,7 @@ const Launch = () => {
             />
 
             {/* Input Box- Collection */}
-            <h2 className=" font-bold text-1xl pt-8">Collection</h2>
+            <h2 className=" font-bold text-xl pt-8 text-white">Collection</h2>
             <input
               type="text"
               onChange={(e) => handleCollectionChange(e)}
@@ -191,7 +224,7 @@ const Launch = () => {
             />
 
             {/* Attributes */}
-            <h2 className=" font-bold text-1xl pt-8">Attributes</h2>
+            <h2 className=" font-bold text-xl pt-8 text-white">Attributes</h2>
 
             <div className="flex flex-col">
               {attributesList.map((singleAttribute, index) => (
@@ -256,7 +289,7 @@ const Launch = () => {
         </div>
       ) : (
         <div>
-        <button onClick={() => authenticate()}>Authenticate</button>
+        <button onClick={() => authenticate()} className="text-white">Authenticate</button>
       </div>
       )}
     </div>
