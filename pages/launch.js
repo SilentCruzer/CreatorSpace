@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { useMoralis } from "react-moralis";
-import { NFTStorage, File } from 'nft.storage';
+import { NFTStorage } from "nft.storage";
 
 const Launch = () => {
-  const { user, isWeb3Enabled, authenticate, isAuthenticated, Moralis } = useMoralis();
-  const client = new NFTStorage({ token: process.env.NEXT_PUBLIC_NFT_STORAGE })
+  const { user, isWeb3Enabled, authenticate, Moralis } =
+    useMoralis();
+  const client = new NFTStorage({ token: process.env.NEXT_PUBLIC_NFT_STORAGE });
   const [fileUrl, setFileUrl] = useState();
   const [mp4Ipfs, setMp4Ipfs] = useState("");
   const [imageFile, setImageFile] = useState();
@@ -21,13 +22,12 @@ const Launch = () => {
     const file = e.target.files[0];
     setFileUrl(URL.createObjectURL(file));
     setImageFile(file);
-  }
+  };
 
   const handleMp4File = (e) => {
     const file = e.target.files[0];
     setMp4File(file);
-  }
-
+  };
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -67,38 +67,36 @@ const Launch = () => {
     e.preventDefault();
 
     try {
-      const someData = new Blob([mp4File])
+      const someData = new Blob([mp4File]);
       const audio = await client.storeBlob(someData);
       setMp4Ipfs(audio.url);
     } catch (error) {
       console.log("Error uploading file: ", error);
     }
 
-    const cid = await client.store(
-      {
-        name: name,
-        external_link: externalLink,
-        description: description,
-        image: imageFile,
-        animation_url: mp4File,
-        attributes: attributesList,
-      },
-    );
+    const cid = await client.store({
+      name: name,
+      external_link: externalLink,
+      description: description,
+      image: imageFile,
+      animation_url: mp4File,
+      attributes: attributesList,
+    });
     const dbNFTs = Moralis.Object.extend("Collections");
     const newNft = new dbNFTs();
-    newNft.set("collectionName", collection)
-    newNft.set("owner", user.attributes.ethAddress)
+    newNft.set("collectionName", collection);
+    newNft.set("owner", user.attributes.ethAddress);
     newNft.set("nftName", name);
-    newNft.set("externalLink", externalLink)
-    newNft.set("desciption", description)
-    newNft.set("music", mp4Ipfs)
-    newNft.set("attributes", JSON.stringify(attributesList))
-    newNft.set("tokenURI", cid.url)
+    newNft.set("externalLink", externalLink);
+    newNft.set("desciption", description);
+    newNft.set("music", mp4Ipfs);
+    newNft.set("attributes", JSON.stringify(attributesList));
+    newNft.set("tokenURI", cid.url);
 
     await newNft.save();
   };
 
-  console.log(isWeb3Enabled)
+  console.log(isWeb3Enabled);
 
   const inputStyle =
     "form-control bg-transparent block w-full px-3 py-1.5 text-base font-normal text-gray-200 bg-clip-padding border-2 border-solid border-neutral-700 rounded transition ease-in-out m-0 focus:text-white  focus:border-gray-400 focus:outline-none";
@@ -162,8 +160,8 @@ const Launch = () => {
               </div>
             </div>
 
- {/* Input Box- Music file */}
- <h2 className=" font-bold text-xl pt-5 text-white">
+            {/* Input Box- Music file */}
+            <h2 className=" font-bold text-xl pt-5 text-white">
               Attach music<span className=" text-red-600"> *</span>
             </h2>
             <input
@@ -175,7 +173,6 @@ const Launch = () => {
               placeholder="Item Name"
               onChange={handleMp4File}
             />
-
 
             {/* Input Box- Name */}
             <h2 className=" font-bold text-xl pt-5 text-white">
@@ -189,10 +186,10 @@ const Launch = () => {
               placeholder="Item Name"
             />
 
-
-
             {/* Input Box- External Link */}
-            <h2 className=" font-bold text-xl pt-8 text-white">External Link</h2>
+            <h2 className=" font-bold text-xl pt-8 text-white">
+              External Link
+            </h2>
             <input
               type="text"
               onChange={(e) => handleExternalLinkChange(e)}
@@ -200,7 +197,6 @@ const Launch = () => {
               id="exampleFormControlInput1"
               placeholder="External Link"
             />
-            
 
             {/* Input Box- Description */}
             <h2 className=" font-bold text-xl pt-8 text-white">Description</h2>
@@ -288,8 +284,10 @@ const Launch = () => {
         </div>
       ) : (
         <div>
-        <button onClick={() => authenticate()} className="text-white">Authenticate</button>
-      </div>
+          <button onClick={() => authenticate()} className="text-white">
+            Authenticate
+          </button>
+        </div>
       )}
     </div>
   );

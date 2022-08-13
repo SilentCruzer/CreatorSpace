@@ -1,10 +1,18 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Transition } from "@headlessui/react";
 import { ConnectButton } from "web3uikit";
 import Link from "next/link";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [username, setUserName] = useState("");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setUserName(localStorage.getItem("Username"));
+      console.log(username);
+    }
+  });
   return (
     <div className="pb-20">
       <nav className=" shadow-sm fixed w-full z-10 bg-zinc-900">
@@ -35,17 +43,9 @@ function Navbar() {
                   </Link>
 
                   <Link href="/account" passHref>
-                    <p className="cursor-pointer hover:bg-violet-900 text-white hover:text-white px-3 py-2 rounded-md text-sm font-semibold">
-                      Account
-                    </p>
-                  </Link>
-
-                  <Link
-                    href="/account"
-                    passHref
-                  >
-                    <div 
-                    className="mt-5 text-violet-500 border border-violet-500 hover:bg-violet-500 hover:text-white p-3 rounded-full text-lg font-bold px-5">Connect</div>
+                    <div className="mt-5 text-violet-500 border border-violet-500 hover:bg-violet-500 hover:text-white p-3 rounded-full text-lg font-bold px-5">
+                      {username != null ? username : "Connect"}
+                    </div>
                   </Link>
                 </div>
               </div>
@@ -175,16 +175,3 @@ function Navbar() {
 }
 
 export default Navbar;
-
-// import { ConnectButton } from "web3uikit"
-
-// export default function Header() {
-//     return (
-//         <nav className="p-5 border-b-2 flex flex-row">
-//             <h1 className="py-4 px-4 font-bold text-3xl"> Creator space</h1>
-//             <div className="ml-auto py-2 px-4">
-//                 <ConnectButton moralisAuth={false}/>
-//             </div>
-//         </nav>
-//     )
-// }
