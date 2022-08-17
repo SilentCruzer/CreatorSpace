@@ -1,5 +1,7 @@
 import Link from "next/link";
-import React from "react";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { useMoralis } from "react-moralis";
 
 const tmpData = [
   {
@@ -37,8 +39,7 @@ const tmpData = [
     image:
       "https://lh3.googleusercontent.com/GL8EXFemg0NpVwBqB1mFRuIQs8z4g6QrPAbjO8j9a7Nk6wdLiPwAkUU_M1x5Wre_6XCCc17B5Pel8NNAsc5ALIv2e61IctQJ0eRx6g=w600",
   },
-  
-  
+
   {
     name: "Meta Eagle 1160",
     tokenId: "#1160",
@@ -74,39 +75,58 @@ const tmpData = [
     image:
       "https://lh3.googleusercontent.com/wRu1u0yEByiv2Ckp19pOYva-wx3kxDiHQoWeyJFfmO6EuNkjQ1jD3CC16DvRN7Me1XtA9n2Ppar6VJ89dK1rZyqvbt2ueMlng14daQ=w600",
   },
-  
 ];
 
 const ArtistTrending = () => {
+  const router = useRouter();
+  const { Moralis } = useMoralis();
+  const [artistId, setArtistId] = useState(router.query.collectionId);
+  const [artistCollections, setArtistCollections] = useState();
+
+  
+  useEffect(() => {
+    setArtistId(router.query.collectionId);
+    async function fetchData() {
+      if (artistId) {
+        const dbNFTs = Moralis.Object.extend("Collections");
+        const query = new Moralis.Query(dbNFTs);
+        query.equalTo("Artist", artistId);
+        const collectionDB = await query.find();
+        if(collectionDB)
+          setArtistCollections(collectionDB)
+      }
+    }
+    fetchData();
+  }, [Moralis.Object, Moralis.Query, artistId, router.query.collectionId]);
+
   return (
     <div className="grid 2xl:grid-cols-5 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 gap-16 pb-10 pt-5">
-      {tmpData.map((item, index) => (
+      { artistCollections && artistCollections.map((item, index) => (
         <Link key={index} href={`/collection/${index}`} passHref>
           <div className="max-w-sm bg-black rounded-3xl shadow-2xl hover:shadow-neutral-800 hover:cursor-pointer">
             <a href="#">
               <img
                 className="rounded-t-lg rounded-t-3xl"
-                src={item.image}
+                src={item.attributes.image}
                 alt=""
               />
             </a>
             <div className="p-5 flex flex-col gap-3">
-                <div className="flex justify-between">
-                    <div className="flex flex-col">
-                        <h1 className="text-white text-sm">{item.name}</h1>
-                        <h1 className="text-gray-500 text-sm">{item.tokenId}</h1>
-                    </div>
-                    <div className="flex flex-col">
-                        <h1 className="text-white text-sm">ETH</h1>
-                        <h1 className="text-gray-500 text-sm">{item.price}</h1>
-                    </div>
+              <div className="flex justify-between">
+                <div className="flex flex-col">
+                  <h1 className="text-white text-sm">{item.attributes.nftName}</h1>
+                  <h1 className="text-gray-500 text-sm">#{item.attributes.tokenId}</h1>
                 </div>
-                <Link href={`/collection/0/nft/${index}`} passHref>
+                <div className="flex flex-col">
+                  <h1 className="text-white text-sm">ETH</h1>
+                  <h1 className="text-gray-500 text-sm">{item.attributes.Price}</h1>
+                </div>
+              </div>
+              <Link href={`/collection/${artistId}/nft/${item.attributes.tokenId}`} passHref>
                 <div className=" text-white font-bold text-center border rounded-3xl border-gray-400 p-1 hover:bg-neutral-800 hover:shadow-inner">
-                        View
-                    </div>
-                </Link>
-                
+                  View
+                </div>
+              </Link>
             </div>
           </div>
         </Link>

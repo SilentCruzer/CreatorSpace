@@ -60,7 +60,6 @@ const Launch = () => {
 
   const handleAttributeAdd = () => {
     setAttributesList([...attributesList, { trait_type: "", value: "" }]);
-    console.log(attributesList);
   };
 
   const onSubmit = async (e) => {
@@ -96,7 +95,6 @@ const Launch = () => {
     await newNft.save();
   };
 
-  console.log(isWeb3Enabled);
 
   const inputStyle =
     "form-control bg-transparent block w-full px-3 py-1.5 text-base font-normal text-gray-200 bg-clip-padding border-2 border-solid border-neutral-700 rounded transition ease-in-out m-0 focus:text-white  focus:border-gray-400 focus:outline-none";

@@ -42,9 +42,13 @@ const Account = () => {
   };
 
   const handleDisconnect = async () => {
-    await deactivateWeb3();
+    await deactivateWeb3();0
     if (typeof window !== "undefined") {
       localStorage.setItem("walletConnected", false);
+      localStorage.removeItem("Username")
+      localStorage.removeItem("userAddress")
+      localStorage.removeItem("profilePic")
+      localStorage.removeItem("bannerImage")
       setConnected(false);
     }
   };
@@ -61,7 +65,6 @@ const Account = () => {
     const profileIpfs = ipfs.data.image.href;
     const bannerIpfs = ipfs.data.bannerImage.href;
 
-    console.log(ipfs.data.image);
 
     const dbArtist = Moralis.Object.extend("Artists");
     const query = new Moralis.Query(dbArtist);
@@ -106,7 +109,7 @@ const Account = () => {
       setProfileSrc(localStorage.getItem("profilePic"));
       setBannerSrc(localStorage.getItem("bannerImage"));
     }
-  }, []);
+  }, [connected]);
   return (
     <div>
       {isLoading == "notStarted" ? (
@@ -226,9 +229,7 @@ const Account = () => {
           />
           <div className="font-bold text-xl pt-5 text-white">Wallet</div>
           <div className="flex flex-col gap-4">
-            {connected ||
-            (typeof window !== "undefined" &&
-              localStorage.getItem("walletConnected")) ? (
+            { connected ? (
               <div className="flex flex-col">
                 <div className="text-gray-400 text-xl">
                   {user.attributes.ethAddress}

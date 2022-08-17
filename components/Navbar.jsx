@@ -10,7 +10,6 @@ function Navbar() {
   useEffect(() => {
     if (typeof window !== "undefined") {
       setUserName(localStorage.getItem("Username"));
-      console.log(username);
     }
   });
   return (

@@ -46,7 +46,6 @@ function HomePage() {
 
 
   const handleChangeCollection = async (col) => {;
-    console.log(rankedNfts)
     setNFTBalances(rankedNfts);
   };
 
@@ -54,11 +53,9 @@ function HomePage() {
     if (num && col) {
       const dbNFTs = Moralis.Object.extend(col);
       const query = new Moralis.Query(dbNFTs);
-      console.log(num);
       query.equalTo("tokenId", num);
       let selectedNFT = await query.first();
       selectedNFT = selectedNFT.attributes;
-      console.log(selectedNFT);
       setNft(selectedNFT);
       setVisibility(true);
     }

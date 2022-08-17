@@ -1,22 +1,49 @@
-import React from "react";
+import {useEffect, useState} from "react";
+import { useRouter } from "next/router";
+import { useMoralis } from "react-moralis";
 import { FaEthereum } from "react-icons/fa";
 
 const ViewNft = () => {
+  const router = useRouter();
+  const { Moralis } = useMoralis();
+  const [nftId, setNftId] = useState(router.query.nftId);
+  const [artistId, setArtistId] = useState(router.query.collectionId);
+  const [artistCollections, setArtistCollections] = useState();
+
+  useEffect(() => {
+    setNftId(router.query.nftId);
+    setArtistId(router.query.artistId);
+    async function fetchData() {
+      if (nftId && artistId) {
+        const dbNFTs = Moralis.Object.extend("Collections");
+        const query = new Moralis.Query(dbNFTs);
+        query.equalTo("Artist", artistId);
+        query.equalTo("tokenId", nftId);
+        const collectionDB = await query.find();
+        setArtistCollections(collectionDB)
+      }
+    }
+    fetchData();
+    
+  }, [Moralis.Object, Moralis.Query, artistCollections, artistId, nftId, router.query.artistId, router.query.nftId]);
+  if(artistCollections){
+    console.log(artistCollections[0].attributes)
+  }
   return (
     <div className="p-10 px-20 flex flex-col items-center h-full">
-      <div className="flex justify-between">
+      {artistCollections && (
+        <div className="flex justify-between">
         <div className="flex flex-col w-1/2 gap-10 justify-center">
-          <h1 className="text-white text-5xl">Meta Eagle 5629</h1>
-          <h1 className=" text-purple-600 text-xl">Gallyverse collection</h1>
+          <h1 className="text-white text-5xl">{artistCollections[0].attributes.nftName}</h1>
+          <h1 className=" text-purple-600 text-xl">{artistCollections[0].attributes.collectionName}</h1>
           <h1 className="text-white text-lg tracking-wider">
-            Galyverse is the brainchild of 3D artist and digital sculptor Gal
-            Yosef.
+            {artistCollections[0].attributes.description}
           </h1>
           <div className="flex flex-col bg-neutral-800 w-fit p-4 rounded-lg gap-2">
             <h1 className="text-white">Current Price</h1>
             <div className="flex gap-2 items-center">
               <FaEthereum className="text-white text-2xl"/>
-            <h1 className="text-white text-2xl font-semibold">0.025</h1>
+            <h1 className="text-white text-2xl font-semibold">{artistCollections[0].attributes.Price}</h1>
             </div>
             
           </div>
@@ -32,13 +59,13 @@ const ViewNft = () => {
         <div>
           <img
             className="rounded-3xl"
-            src="https://lh3.googleusercontent.com/PBMXnwcEPBsiHAQChYNL6FMfSmdnu9RPyLu1YO9zr2Mz4ZjadN2213MecU28Iy0RihHZhZ6gEkcAY7uAdBkkLv7VbIyxB8Kri1sVAg=w600"
+            src={artistCollections[0].attributes.image}
           />
         </div>
         <div className="flex flex-col w-1/6 items-center gap-10">
           <div className="flex flex-col items-center">
             <h1 className="text-purple-600">Created by</h1>
-            <h1 className="text-white text-2xl">Arthur</h1>
+            <h1 className="text-white text-2xl">{artistCollections[0].attributes.Artist}</h1>
           </div>
 
           <div className="flex flex-col items-center">
@@ -47,6 +74,8 @@ const ViewNft = () => {
           </div>
         </div>
       </div>
+      )}
+      
     </div>
   );
 };

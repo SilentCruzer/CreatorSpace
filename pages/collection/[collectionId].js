@@ -4,9 +4,6 @@ import ArtistBanner from "../../components/collections/ArtistBanner";
 import ArtistTrending from "../../components/collections/ArtistTrending";
 
 const ViewCollection = (props) => {
-  // const router = useRouter();
-  // const metadata = JSON.parse(router.query.metadata);
-  // console.log(metadata);
 
   const fallbackImg = "https://raw.githubusercontent.com/koehlersimon/fallback/master/Resources/Public/Images/placeholder.jpg";
   return (
