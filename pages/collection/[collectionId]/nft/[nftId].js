@@ -25,7 +25,7 @@ const ViewNft = () => {
       }
     }
     fetchData();
-  }, [Moralis.Object, Moralis.Query, nft, artistId, nftId, router.query.nftId, router.query.collectionId]);
+  }, [Moralis.Object, Moralis.Query, artistId, nftId, router.query.nftId, router.query.collectionId]);
 
   return (
     <div className="p-10 px-20 flex flex-col items-center h-full">
