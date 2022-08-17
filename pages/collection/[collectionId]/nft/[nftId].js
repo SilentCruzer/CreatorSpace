@@ -8,11 +8,11 @@ const ViewNft = () => {
   const { Moralis } = useMoralis();
   const [nftId, setNftId] = useState(router.query.nftId);
   const [artistId, setArtistId] = useState(router.query.collectionId);
-  const [artistCollections, setArtistCollections] = useState();
+  const [nft, setNFTBalances] = useState();
 
   useEffect(() => {
     setNftId(router.query.nftId);
-    setArtistId(router.query.artistId);
+    setArtistId(router.query.collectionId);
     async function fetchData() {
       if (nftId && artistId) {
         const dbNFTs = Moralis.Object.extend("Collections");
@@ -20,30 +20,28 @@ const ViewNft = () => {
         query.equalTo("Artist", artistId);
         query.equalTo("tokenId", nftId);
         const collectionDB = await query.find();
-        setArtistCollections(collectionDB)
+        if(collectionDB)
+          setNFTBalances(collectionDB)
       }
     }
     fetchData();
-    
-  }, [Moralis.Object, Moralis.Query, artistCollections, artistId, nftId, router.query.artistId, router.query.nftId]);
-  if(artistCollections){
-    console.log(artistCollections[0].attributes)
-  }
+  }, [Moralis.Object, Moralis.Query, nft, artistId, nftId, router.query.nftId, router.query.collectionId]);
+
   return (
     <div className="p-10 px-20 flex flex-col items-center h-full">
-      {artistCollections && (
+      {nft && (
         <div className="flex justify-between">
         <div className="flex flex-col w-1/2 gap-10 justify-center">
-          <h1 className="text-white text-5xl">{artistCollections[0].attributes.nftName}</h1>
-          <h1 className=" text-purple-600 text-xl">{artistCollections[0].attributes.collectionName}</h1>
+          <h1 className="text-white text-5xl">{nft[0].attributes.nftName}</h1>
+          <h1 className=" text-purple-600 text-xl">{nft[0].attributes.collectionName}</h1>
           <h1 className="text-white text-lg tracking-wider">
-            {artistCollections[0].attributes.description}
+            {nft[0].attributes.description}
           </h1>
           <div className="flex flex-col bg-neutral-800 w-fit p-4 rounded-lg gap-2">
             <h1 className="text-white">Current Price</h1>
             <div className="flex gap-2 items-center">
               <FaEthereum className="text-white text-2xl"/>
-            <h1 className="text-white text-2xl font-semibold">{artistCollections[0].attributes.Price}</h1>
+            <h1 className="text-white text-2xl font-semibold">{nft[0].attributes.Price}</h1>
             </div>
             
           </div>
@@ -59,13 +57,13 @@ const ViewNft = () => {
         <div>
           <img
             className="rounded-3xl"
-            src={artistCollections[0].attributes.image}
+            src={nft[0].attributes.image}
           />
         </div>
         <div className="flex flex-col w-1/6 items-center gap-10">
           <div className="flex flex-col items-center">
             <h1 className="text-purple-600">Created by</h1>
-            <h1 className="text-white text-2xl">{artistCollections[0].attributes.Artist}</h1>
+            <h1 className="text-white text-2xl">{nft[0].attributes.Artist}</h1>
           </div>
 
           <div className="flex flex-col items-center">
