@@ -1,8 +1,8 @@
-import React from "react";
-import { Input, Icon } from "web3uikit";
+import { useState, useEffect} from "react";
+import { Icon } from "web3uikit";
 import PostInFeed from "../../components/PostInFeed";
-import { defaultImgs } from "../../constants/defaultImgs";
 import Stories from "../../components/Stories";
+import { client, recommendProfiles } from "../../components/api";
 import {
   AiFillCalendar,
   AiFillVideoCamera,
@@ -10,6 +10,7 @@ import {
 } from "react-icons/ai";
 
 const Space = () => {
+  
   return (
     <div className="py-10 flex-col gap-10 space-y-5">
       <h1 className="text-white text-xl font-semibold pb-2">Quick Access</h1>
