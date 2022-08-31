@@ -1,16 +1,15 @@
 import { useState, useEffect} from "react";
+import { update } from "../../redux/features/profileSlice";
 import { Icon } from "web3uikit";
 import PostInFeed from "../../components/PostInFeed";
 import Stories from "../../components/Stories";
-import { client, recommendProfiles } from "../../components/api";
 import {
   AiFillCalendar,
   AiFillVideoCamera,
   AiOutlineUnorderedList,
 } from "react-icons/ai";
 
-const Space = () => {
-  
+const Space = (props) => {
   return (
     <div className="py-10 flex-col gap-10 space-y-5">
       <h1 className="text-white text-xl font-semibold pb-2">Quick Access</h1>

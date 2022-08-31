@@ -1,25 +1,9 @@
 import { useState, useEffect} from "react";
 import { AiOutlineArrowRight } from "react-icons/ai";
-import { client, recommendProfiles } from "./api";
+import { client, recommendProfiles } from "../api";
 
 
-const Rightbar = () => {
-  const [profiles, setProfiles] = useState([])
-
-  useEffect(() => {
-    fetchProfiles();
-  }, []);
-  
-  async function fetchProfiles() {
-      try {
-      const response = await client.query(recommendProfiles).toPromise()
-      setProfiles(response.data.recommendedProfiles)
-      console.log(response)
-    } catch (error) {
-      console.log(error)
-    }
-    }
-
+const Rightbar = ({profiles}) => {
   return (
     <>
     <div className="py-3">

@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Icon } from "web3uikit";
 import Link from "next/link";
 import { useMoralis } from "react-moralis";
-import { defaultImgs } from "../constants/defaultImgs";
-import canoe from "../images/canoe.png";
+import { defaultImgs } from "../../constants/defaultImgs";
+import canoe from "../../images/canoe.png"
 import Image from "next/image";
 
 const Sidebar = () => {
