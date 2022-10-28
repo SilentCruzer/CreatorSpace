@@ -1,0 +1,9 @@
+To do :
+    1.NFT collection with 3 sub divisions. Each sub-division having its own 
+    unique set of attributes
+    2. We can have different structs
+        a. Community conference / concert token (1000 NFT's)
+        b. Access unlockables 
+            i. Virtual Access Tokens
+            ii. Physical Access Tokens
+            
