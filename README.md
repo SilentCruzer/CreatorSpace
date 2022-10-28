@@ -1,34 +1,16 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<p align="center"><img src="images/Readme/banner.png" alt="CreatorSpace" width="100%"/></a></p>
 
-## Getting Started
+## 📌 Introduction 
+CreatorSpace is a web3 platform that allows musicians to promote their work without the assistance of outside labels. We do this by giving artists the ability to design and release their own nft collections and by establishing a decentralised social media platform that enables them to communicate with their followers more directly.
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+Musicians and other creators don't have to immediately give platforms ownership of their works thanks to NFTs. When they mint an NFT, they have the option of giving up ownership of a song or album, but they can also choose to keep it if they add it to the NFT. Therefore, when content is sold, musicians can receive more equitable and direct payment. If an NFT owner chooses to sell the NFT again, the original author may be compensated automatically.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The decentralised social media platform is made using the lens protocol. Ownership of data, improved connectivity, access to more information, a permissionless network whose service cannot be interrupted, and the absence of a single entity controlling the information are some advantages of the Lens Protocol.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## 🏁 Tech Stack Used
+- [NextJs](https://nextjs.org/)
+- [Moralis](https://moralis.io/)
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Demo
+<p align="center"><img src="images/Readme/CreatorSpace.gif" alt="CreatorSpace" width="100%"/></a></p>
